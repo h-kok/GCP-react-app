@@ -6,15 +6,11 @@
 
 -   You can view the live version here: "insert link"
 
----
-
 ## Requirements / Purpose
 
 -   MVP - create e-shop website with list of products, linking to dedicated product page with add product to cart functionality and cart page showing items in cart and add delete functionality.
 -   purpose of project - to reinforce learnings of React
 -   stack used and why - react, part of mvp, to reinforce learning of React.
-
----
 
 ## Build Steps
 
@@ -24,30 +20,21 @@
 -   npm install sass?
 -   npm install react-router-dom?
 -   npm run dev?
-
----
+-   npm install firebase
 
 ## Design Goals / Approach
 
 -   Design goals
 -   why did you implement this the way you did?
 
----
-
----
-
 ## Known issues
 
 -   Remaining bugs, things that have been left unfixed
 -   Features that are buggy / flimsy
 
----
-
 ## Future Goals
 
 -   What are the immediate features you'd add given more time
-
----
 
 ## Change logs
 
@@ -59,10 +46,15 @@
 -   Added users to cohort response payload
 -   Centralized API base URL on frontend using the proxy `package.json` property
 
----
+### 17/04/23
+
+-   Initialised repo, created react app with vite, installed major dependencies.
+-   Created container and component folders and files (+ corresponding styling file)
+-   Add nav bar with routes to home, cart, test product page
+-   Add elements for each component and container to create page layouts
 
 ## What did you struggle with?
 
 -   What? Why? How?
-
----
+-   usestate, useeffect, usecontext
+-   carousel
