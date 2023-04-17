@@ -1,0 +1,24 @@
+.Nav {
+    // margin: 10px;
+    padding: 20px 10px;
+    text-align: center;
+    background-color: darkslategrey;
+    color: white;
+    // position: fixed;
+    position: sticky;
+    top: 0;
+    // width: 100%;
+}
+
+.Link {
+    // margin-top: 50px;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    &:visited {
+        color: white;
+    }
+    &:hover {
+        font-size: larger;
+    }
+}
