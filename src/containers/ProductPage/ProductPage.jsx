@@ -11,20 +11,18 @@ import { updateActivewear } from "../../services/activewear";
 const ProductPage = ({ updated, setUpdated }) => {
     const { id } = useParams();
     const [item, setItem] = useState(null);
-    console.log(item, "item");
+    // console.log(item, "item");
     const [like, setLike] = useState(false);
     const [unavailable, setUnavailable] = useState(false);
+    const [index, setIndex] = useState(0);
     // console.log(like);
 
     const handleClickLike = async () => {
-        //function to toggle like state true/false
         await updateActivewear(id, { favourited: !like });
         setLike(!like);
     };
 
     const handleClickBuy = async () => {
-        //function to decrease the quantity buy 1 on every click, min quantity 0
-        //if quanitty=0, throw error message, otherwise can add to cart
         const data = await getActivewearById(id);
         // console.log(data.quantity);
         try {
@@ -35,11 +33,25 @@ const ProductPage = ({ updated, setUpdated }) => {
         await updateQuantity(id, -1);
     };
 
+    const handleColourChange = (e) => {
+        const colour = e.target.value;
+        // console.log(optionVal, "option");
+        const findIndex = item.colour.findIndex((i) => i === colour);
+        setIndex(findIndex);
+        //find value or index? of colour selection so can display on cart page.
+    };
+
+    const handleSizeChange = (e) => {
+        const size = e.target.value;
+        //find value or index? of size selection so can display on cart page.
+    };
+
     useEffect(() => {
         const wrapper = async () => {
             const data = await getActivewearById(id);
-            console.log(data, "data");
+            // console.log(data, "data");
             setItem(data);
+            setIndex(0);
         };
         wrapper();
     }, [updated, id]);
@@ -49,7 +61,7 @@ const ProductPage = ({ updated, setUpdated }) => {
             <div>
                 <img
                     className={styles.Product_Img}
-                    src={item.image[0] ?? "Image unavailable"}
+                    src={item.image[index] ?? "Image unavailable"}
                     alt="product image"
                 />
             </div>
@@ -58,7 +70,7 @@ const ProductPage = ({ updated, setUpdated }) => {
                 <p>{item.name ?? "Name unavailable"}</p>
                 <p>${item.price ?? "Price unavailabe"}.00</p>
                 <p>Colour:</p>
-                <select name="" id="">
+                <select name="" id="" onChange={handleColourChange}>
                     {item.colour &&
                         item.colour.map((item) => {
                             return <Option value={item} key={item} />;
@@ -75,7 +87,7 @@ const ProductPage = ({ updated, setUpdated }) => {
                     <Button
                         onClick={handleClickBuy}
                         className={styles.Product_BuyBtn}
-                        value="Add to Bag"
+                        value="Add to Cart"
                     />
                     <Button
                         onClick={handleClickLike}
