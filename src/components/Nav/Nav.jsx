@@ -7,9 +7,6 @@ const Nav = () => {
             <NavLink to="/" className={styles.Link}>
                 Home
             </NavLink>
-            <NavLink to="/testproduct" className={styles.Link}>
-                Test Product
-            </NavLink>
             <NavLink to="/cart" className={styles.Link}>
                 Cart
             </NavLink>
