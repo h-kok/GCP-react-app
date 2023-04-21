@@ -19,7 +19,12 @@ const CartProductCard = () => {
                 <Button value="+" />
             </div>
             <div>
-                <Button value="Remove" />
+                <Button
+                    value={[
+                        <img src="https://img.icons8.com/ios/20/null/trash--v1.png" />,
+                        "Remove",
+                    ]}
+                />
             </div>
         </div>
     );
