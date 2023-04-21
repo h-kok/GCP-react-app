@@ -1,0 +1,64 @@
+import React, { useState, useEffect } from "react";
+import Button from "../../components/Button/Button";
+import styles from "./CarouselContainer.module.scss";
+import { getCarouselItems } from "../../services/carousel";
+import { NavLink } from "react-router-dom";
+
+const CarouselContainer = ({ items }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [images, setImages] = useState("https://placehold.co/200x200");
+    const [id, setId] = useState(0);
+    const length = 4;
+
+    useEffect(() => {
+        const wrapper = async () => {
+            const data = await getCarouselItems(items);
+            // console.log(data, "data");
+            const img = data.map((item) => item.image[0]);
+            // console.log(img, "img");
+            const id = data.map((item) => item.id);
+            // console.log(id, "id");
+            setImages(img);
+            setId(id);
+        };
+        wrapper();
+    }, [items]);
+
+    const handlePrevious = () => {
+        const newIndex = currentIndex - 1;
+        setCurrentIndex(newIndex < 0 ? length : newIndex);
+    };
+
+    const handleNext = () => {
+        const newIndex = currentIndex + 1;
+        setCurrentIndex(newIndex >= length ? 0 : newIndex);
+    };
+
+    return (
+        <div className={styles.Carousel}>
+            <Button
+                className={styles.Carousel_Btn}
+                value={
+                    <img src="https://img.icons8.com/ios/50/null/back--v1.png" />
+                }
+                onClick={handlePrevious}
+            />
+            <NavLink to={`/products/${id[currentIndex]}`}>
+                <img
+                    className={styles.Carousel_Img}
+                    src={images[currentIndex]}
+                    alt="activewear"
+                />
+            </NavLink>
+            <Button
+                className={styles.Carousel_Btn}
+                value={
+                    <img src="https://img.icons8.com/ios/50/null/forward--v1.png" />
+                }
+                onClick={handleNext}
+            />
+        </div>
+    );
+};
+
+export default CarouselContainer;
