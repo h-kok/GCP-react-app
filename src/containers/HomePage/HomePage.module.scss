@@ -1,3 +1,9 @@
-// .HomePage {
+.ProductList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
 
-// }
+    &_Img {
+        width: 300px;
+    }
+}

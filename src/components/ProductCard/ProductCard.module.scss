@@ -1,0 +1,14 @@
+.ProductCard {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    // margin: 30px;
+
+    &_Img {
+        width: 200px;
+    }
+}

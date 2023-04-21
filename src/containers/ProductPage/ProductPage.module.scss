@@ -1,0 +1,29 @@
+.Product {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    &_Img {
+        width: 300px;
+    }
+    &_BuyBtn {
+        width: 150px;
+        height: 50px;
+        background-color: white;
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+    }
+    &_LikeBtn {
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border: 2px solid black;
+        &:hover {
+            background-color: cadetblue;
+        }
+        &_Img {
+            width: 30px;
+        }
+    }
+}
