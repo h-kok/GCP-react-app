@@ -5,11 +5,12 @@ import Nav from "./components/Nav/Nav";
 import HomePage from "./containers/HomePage/HomePage";
 import ProductPage from "./containers/ProductPage/ProductPage";
 import CartPage from "./containers/CartPage/CartPage";
-import { getActivewearById, getAllActivewear } from "./services/activewear";
+import { getAllActivewear } from "./services/activewear";
 
 function App() {
     const [items, setItems] = useState(null);
     const [updated, setUpdated] = useState(0);
+    const [cartItem, setCartItem] = useState(null);
 
     useEffect(() => {
         const wrapper = async () => {
@@ -42,10 +43,14 @@ function App() {
                             <ProductPage
                                 updated={updated}
                                 setUpdated={setUpdated}
+                                setCartItem={setCartItem}
                             />
                         }
                     />
-                    <Route path="/cart" />
+                    <Route
+                        path="/cart"
+                        element={<CartPage cartItem={cartItem} />}
+                    />
                     {/* <Route path="/testproduct" element={<ProductPage />} /> */}
                 </Routes>
             </BrowserRouter>

@@ -2,7 +2,7 @@ import styles from "./CartPage.module.scss";
 import CartProductCard from "../../components/CartProductCard/CartProductCard";
 import Button from "../../components/Button/Button";
 
-const CartPage = () => {
+const CartPage = ({ cartItem }) => {
     return (
         <div>
             <h3>Your Cart</h3>
