@@ -1,7 +1,9 @@
-import styles from "./Button.module.scss";
-
-const Button = ({ value }) => {
-    return <button>{value}</button>;
+const Button = ({ value, className, onClick }) => {
+    return (
+        <button className={className} onClick={onClick}>
+            {value}
+        </button>
+    );
 };
 
 export default Button;
