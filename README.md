@@ -69,8 +69,13 @@ npm install
 ### 21/04/23
 
 -   Add carousel feature to homepage.
--   Add NavLink to feature images.
--   Add option values.
+-   Add NavLink feature to carousel images.
+-   Add colour and size option values to product page.
+-   Sync colour selection with image displayed in product page.
+
+### 22/04/23
+
+-   Cart page, track state
 
 ## What did you struggle with?
 
