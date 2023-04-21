@@ -22,6 +22,10 @@
 -   npm run dev?
 -   npm install firebase
 
+```
+npm install
+```
+
 ## Design Goals / Approach
 
 -   Design goals
@@ -40,21 +44,36 @@
 
 -   Write a paragraph labelled with the date every day you work on the project to discuss what you've done for the say. Be specific about the changes that have happened for that day.
 
-### 13/02/2022 - {Theme of changes if applicable}
-
--   Extended the expiry time of JWT tokens on the backend
--   Added users to cohort response payload
--   Centralized API base URL on frontend using the proxy `package.json` property
-
 ### 17/04/23
 
--   Initialised repo, created react app with vite, installed major dependencies.
+-   Initialised repo, created vite react app, installed major dependencies.
 -   Created container and component folders and files (+ corresponding styling file)
 -   Add nav bar with routes to home, cart, test product page
 -   Add elements for each component and container to create page layouts
+
+### 18/04/23
+
+-   Create Firestore database and add items
+
+### 19/04/23
+
+-   Initialise firestore
+-   Create functions to fetch data from database
+-   Create option component for sizes, colours
+
+### 20/04/23
+
+-   Add onclick function to 'like' and 'add to cart'buttons in product page to update database
+-
+
+### 21/04/23
+
+-   Add carousel feature to homepage.
+-   Add NavLink to feature images.
+-   Add option values.
 
 ## What did you struggle with?
 
 -   What? Why? How?
 -   usestate, useeffect, usecontext
--   carousel
+-   carousel - accessing items passed down as props but async, created useeffect to store value of promise so could access it.
