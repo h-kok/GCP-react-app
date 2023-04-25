@@ -1,3 +1,58 @@
 .Product {
     display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    padding: 10px;
+    width: 70vw;
+    &_Img {
+        height: 150px;
+    }
+    &_Section {
+        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+    }
+    &_Details {
+        min-width: 40vw;
+    }
+    &_Brand {
+        font-weight: bold;
+    }
+    &_Name {
+        font-style: italic;
+    }
+    &_Para {
+        padding-bottom: 5px;
+    }
+    &_Btn {
+        width: 150px;
+        height: 50px;
+        background-color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            font-weight: bold;
+        }
+        &_Img {
+            width: 15px;
+            padding-right: 5px;
+        }
+    }
+    &_Count {
+        background-color: white;
+        width: 15px;
+        height: 20px;
+        border-radius: 5px;
+        border: 1px solid black;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+    }
 }

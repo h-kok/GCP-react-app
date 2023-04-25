@@ -13,11 +13,8 @@ const CarouselContainer = ({ items }) => {
     useEffect(() => {
         const wrapper = async () => {
             const data = await getCarouselItems(items);
-            // console.log(data, "data");
             const img = data.map((item) => item.image[0]);
-            // console.log(img, "img");
             const id = data.map((item) => item.id);
-            // console.log(id, "id");
             setImages(img);
             setId(id);
         };

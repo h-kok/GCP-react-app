@@ -3,13 +3,15 @@ import CarouselContainer from "../CarouselContainer/CarouselContainer";
 import styles from "./HomePage.module.scss";
 
 const HomePage = ({ items }) => {
-    // console.log(items, "homepage");
     return (
         <div className={styles.HomePage}>
-            <h1>ActiveWear</h1>
-            <h3>Shop the latest styles</h3>
-            <CarouselContainer items={items} />
-            <div className={styles.ProductList}>
+            <h3 className={styles.HomePage_Heading}>
+                Shop the latest in Women's Activewear
+            </h3>
+            <section className={styles.Carousel}>
+                <CarouselContainer items={items} />
+            </section>
+            <section className={styles.ProductList}>
                 {items ? (
                     items.map((item) => {
                         return (
@@ -26,7 +28,7 @@ const HomePage = ({ items }) => {
                 ) : (
                     <p>Items loading...</p>
                 )}
-            </div>
+            </section>
         </div>
     );
 };

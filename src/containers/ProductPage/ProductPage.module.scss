@@ -1,9 +1,30 @@
 .Product {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     padding: 20px;
     &_Img {
         width: 300px;
+    }
+    &_Wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0 30px;
+        min-width: 250px;
+    }
+    &_Detail {
+        // margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+    }
+    &_Para {
+        padding: 5px;
+        display: flex;
+    }
+    &_Btns {
+        display: flex;
+        justify-content: space-between;
     }
     &_BuyBtn {
         width: 150px;
@@ -19,11 +40,18 @@
         height: 50px;
         background-color: white;
         border: 2px solid black;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &:hover {
-            background-color: cadetblue;
+            background-color: rgb(238, 238, 238);
         }
         &_Img {
             width: 30px;
         }
+    }
+    &_Brand {
+        font-weight: bold;
     }
 }

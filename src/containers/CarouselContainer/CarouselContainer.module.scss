@@ -3,14 +3,15 @@
     align-items: center;
 
     &_Img {
-        width: 400px;
+        width: 300px;
     }
     &_Btn {
         height: 60px;
         background-color: white;
         border: none;
+        border-radius: 5px;
         &:hover {
-            background-color: darkslategray;
+            background-color: rgb(238, 238, 238);
         }
     }
 }

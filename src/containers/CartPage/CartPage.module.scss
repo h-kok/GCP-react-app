@@ -1,0 +1,36 @@
+.Cart {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+
+    &_Wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 90vw;
+        flex-wrap: wrap;
+    }
+
+    &_Btn {
+        width: 150px;
+        height: 50px;
+
+        &:hover {
+            font-weight: bold;
+        }
+        &_Buy {
+            background-color: white;
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+        &_Shop {
+            background-color: black;
+            color: white;
+        }
+    }
+    &_Para {
+        margin: 10px 0;
+    }
+}

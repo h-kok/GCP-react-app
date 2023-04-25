@@ -91,7 +91,8 @@ npm install
 ### 25/04/23
 
 -   Fix bug that allowed adding duplicate items to cart by creating if check to onclick function in product page.
--   Add styling components.
+-   Add function to update total price on change of item quantities in cart.
+-   Add styling to all components.
 
 ## What did you struggle with?
 

@@ -1,7 +1,21 @@
+.HomePage {
+    margin: 10px;
+    &_Heading {
+        margin: 10px;
+    }
+}
+
+.Carousel {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
 .ProductList {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
 
     &_Img {
         width: 300px;
