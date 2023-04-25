@@ -1,5 +1,5 @@
 import styles from "./App.module.scss";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import HomePage from "./containers/HomePage/HomePage";
@@ -9,8 +9,7 @@ import { getAllActivewear } from "./services/activewear";
 
 function App() {
     const [items, setItems] = useState(null);
-    const [updated, setUpdated] = useState(0);
-    const [cartItem, setCartItem] = useState(null);
+    const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
         const wrapper = async () => {
@@ -18,40 +17,27 @@ function App() {
             setItems(allItems);
         };
         wrapper();
-    }, [updated]);
-    // console.log(items, "items");
+    }, []);
 
     return (
         <div className={styles.App}>
             <BrowserRouter>
                 <Nav />
                 <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <HomePage
-                                items={items}
-                                setItems={setItems}
-                                updated={updated}
-                                setUpdated={setUpdated}
-                            />
-                        }
-                    />
+                    <Route path="/" element={<HomePage items={items} />} />
                     <Route
                         path="/products/:id"
-                        element={
-                            <ProductPage
-                                updated={updated}
-                                setUpdated={setUpdated}
-                                setCartItem={setCartItem}
-                            />
-                        }
+                        element={<ProductPage cartItems={cartItems} />}
                     />
                     <Route
                         path="/cart"
-                        element={<CartPage cartItem={cartItem} />}
+                        element={
+                            <CartPage
+                                cartItems={cartItems}
+                                setCartItems={setCartItems}
+                            />
+                        }
                     />
-                    {/* <Route path="/testproduct" element={<ProductPage />} /> */}
                 </Routes>
             </BrowserRouter>
         </div>
