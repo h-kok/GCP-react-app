@@ -30,15 +30,17 @@ npm install
 
 -   Design goals
 -   why did you implement this the way you did?
+-   Followed MVP to create e-commerce store. Took inspiration from online clothing store design/layout.
 
 ## Known issues
 
--   Remaining bugs, things that have been left unfixed
--   Features that are buggy / flimsy
+-   Carousel items may be duplicate as random nums generator does not check for duplicate nums.
 
 ## Future Goals
 
--   What are the immediate features you'd add given more time
+-   Add a favourites page where user can access all favourited items.
+-   Add auto rotating feature to carousel.
+-   Add footer section with form for email subscription.
 
 ## Change logs
 
@@ -57,28 +59,45 @@ npm install
 
 ### 19/04/23
 
--   Initialise firestore
+-   Initialise firestore in app
 -   Create functions to fetch data from database
 -   Create option component for sizes, colours
 
 ### 20/04/23
 
--   Add onclick function to 'like' and 'add to cart'buttons in product page to update database
--
+-   Add onclick function to 'like' and 'add to cart' buttons in product page to update database
 
 ### 21/04/23
 
 -   Add carousel feature to homepage.
--   Add NavLink feature to carousel images.
+-   Add NavLink to carousel images.
 -   Add colour and size option values to product page.
 -   Sync colour selection with image displayed in product page.
 
-### 22/04/23
+### 23/04/23
 
--   Cart page, track state
+-   Add default values to select elements in product page.
+-   Track item quantity through state and disable btn if no items available.
+-   Track cart items state between page refreshes by adding session storage.
+-   Add function to remove item button to remove item from session storage and from page.
+
+### 24/04/23
+
+-   In product page, 'item unavaiable' function/message was being triggered after trying to immediately add the same item to cart even though items were available. Fixed by removing quantity state from useEffect parameter.
+-   Cart not displaying correct total (lagging behind by 1 item removal), as state of cart items was not updating after removing item. Fixed by moving setCartItem function from App to cart page.
+-   Add increment and decrement function to quantity btns in cart card and linked available quantity to firestore.
+-   Add Navlink to cart images.
+
+### 25/04/23
+
+-   Fix bug that allowed adding duplicate items to cart by creating if check to onclick function in product page.
+-   Add styling components.
 
 ## What did you struggle with?
 
 -   What? Why? How?
 -   usestate, useeffect, usecontext
 -   carousel - accessing items passed down as props but async, created useeffect to store value of promise so could access it.
+-   Storing cart item state between page refreshes. Explored local storage method and implemented this to track state of cart items.
+-   Try to add same product twice -> error
+-   sometimes btn will disable after add item.
