@@ -16,6 +16,8 @@ const CartProductCard = ({
     price,
     cartItems,
     setCartItems,
+    total,
+    setTotal,
 }) => {
     const [showItem, setShowItem] = useState(true);
     const [count, setCount] = useState(quantity);
@@ -44,6 +46,7 @@ const CartProductCard = ({
         } else {
             setCount(count + 1);
             updateQuantity(id, -1);
+            setTotal(total + price);
         }
     };
 
@@ -52,44 +55,73 @@ const CartProductCard = ({
         if (count > 1) {
             setCount(count - 1);
             updateQuantity(id, +1);
+            setTotal(total - price);
         }
     };
 
     return (
         showItem && (
-            <div className={styles.Product}>
-                <NavLink to={`/products/${id}`}>
-                    <div>
-                        <img
-                            className={styles.Product_Img}
-                            src={image}
-                            alt="product image"
+            <>
+                <div className={styles.Product}>
+                    <NavLink to={`/products/${id}`}>
+                        <div className={styles.Product_Section}>
+                            <img
+                                className={styles.Product_Img}
+                                src={image}
+                                alt="product image"
+                            />
+                        </div>
+                    </NavLink>
+                    <div
+                        className={`${styles.Product_Section} ${styles.Product_Details}`}
+                    >
+                        <p
+                            className={`${styles.Product_Brand} ${styles.Product_Para}`}
+                        >
+                            {brand}
+                        </p>
+                        <p
+                            className={`${styles.Product_Name} ${styles.Product_Para}`}
+                        >
+                            {name}
+                        </p>
+                        <p className={styles.Product_Para}>Colour: {colour}</p>
+                        <p className={styles.Product_Para}>Size: {size}</p>
+                        <p className={styles.Product_Para}>
+                            Quantity:{" "}
+                            <Button
+                                className={styles.Product_Count}
+                                value="-"
+                                onClick={handleDecrement}
+                            />
+                            <span>{count}</span>
+                            <Button
+                                className={styles.Product_Count}
+                                value="+"
+                                onClick={handleIncrement}
+                            />
+                        </p>
+                        {unavailable && <p>Maximum quantity reached.</p>}
+                        <p className={styles.Product_Para}>
+                            Subtotal: ${price * count}.00
+                        </p>
+                    </div>
+                    <div className={styles.Product_Section}>
+                        <Button
+                            value={[
+                                <img
+                                    className={styles.Product_Btn_Img}
+                                    src="https://img.icons8.com/android/24/000000/delete.png"
+                                />,
+                                "Remove",
+                            ]}
+                            onClick={handleRemove}
+                            className={styles.Product_Btn}
                         />
                     </div>
-                </NavLink>
-                <div>
-                    <p>{brand}</p>
-                    <p>{name}</p>
-                    <p>Colour: {colour}</p>
-                    <p>Size: {size}</p>
-                    <p>
-                        Quantity: <Button value="-" onClick={handleDecrement} />
-                        <span>{count}</span>
-                        <Button value="+" onClick={handleIncrement} />
-                    </p>
-                    {unavailable && <p>Maximum quantity reached.</p>}
-                    <p>${price * quantity}.00</p>
                 </div>
-                <div>
-                    <Button
-                        value={[
-                            <img src="https://img.icons8.com/ios/20/null/trash--v1.png" />,
-                            "Remove",
-                        ]}
-                        onClick={handleRemove}
-                    />
-                </div>
-            </div>
+                <hr />
+            </>
         )
     );
 };

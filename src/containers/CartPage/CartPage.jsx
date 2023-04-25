@@ -24,9 +24,9 @@ const CartPage = ({ cartItems, setCartItems }) => {
     }, [cartItems]);
 
     return (
-        <div>
-            <h3>Your Cart</h3>
-            <div className={styles.Cart}>
+        <div className={styles.Cart}>
+            <h3 className={styles.Heading}>Cart</h3>
+            <div className={styles.Cart_Wrapper}>
                 <div>
                     {cartItems && cartItems.length ? (
                         cartItems.map((item) => {
@@ -44,23 +44,34 @@ const CartPage = ({ cartItems, setCartItems }) => {
                                     price={item.price}
                                     cartItems={cartItems}
                                     setCartItems={setCartItems}
+                                    total={total}
+                                    setTotal={setTotal}
                                 />
                             );
                         })
                     ) : (
-                        <p>Your cart is empty.</p>
+                        <p className={styles.Cart_Para}>Your cart is empty.</p>
                     )}
                 </div>
-
                 <div>
                     {cartItems && cartItems.length > 0 && (
                         <div>
-                            <h3>Total: ${total}.00</h3>
-                            <Button value="Buy Now" />
+                            <h3 className={styles.Cart_Para}>
+                                Total: ${total}.00
+                            </h3>
+                            <Button
+                                className={`${styles.Cart_Btn} ${styles.Cart_Btn_Buy} ${styles.Cart_Para}`}
+                                value="Buy Now"
+                            />
                         </div>
                     )}
                     <NavLink to="/">
-                        {<Button value="Continue Shopping" />}
+                        {
+                            <Button
+                                className={`${styles.Cart_Btn} ${styles.Cart_Btn_Shop} ${styles.Cart_Para}`}
+                                value="Continue Shopping"
+                            />
+                        }
                     </NavLink>
                 </div>
             </div>
