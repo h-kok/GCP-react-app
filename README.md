@@ -1,26 +1,16 @@
 # eCommerce-App
 
-{add test badges here, all projects you build from here on out will have tests, therefore you should have github workflow badges at the top of your repositories: [Github Workflow Badges](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)}
-
 ## Demo & Snippets
 
 -   You can view the live version here: "insert link"
 
 ## Requirements / Purpose
 
--   MVP - create e-shop website with list of products, linking to dedicated product page with add product to cart functionality and cart page showing items in cart and add delete functionality.
--   purpose of project - to reinforce learnings of React
--   stack used and why - react, part of mvp, to reinforce learning of React.
+-   The MVP was to create an e-commerce website with a minimum of 2 pages, a home page and product page. The bonus activity was to create a cart page, where item quantities could be updated and items could be removed. The requirement was to use Firestore as a database to host product details and to fetch and update data from the react application only.
+-   The purpose of the project was to reinforce learnings of the React framework and Firestore document database, as well as fetching data from within a React app. It is my first project integrating both front end and backend web development.
+-   Tech stack used: React framework, JavaScript, Scss, Firebase/Firestore
 
 ## Build Steps
-
--   how to build / run project
--   use proper code snippets if there are any commands to run
--   npm install
--   npm install sass?
--   npm install react-router-dom?
--   npm run dev?
--   npm install firebase
 
 ```
 npm install
@@ -28,9 +18,7 @@ npm install
 
 ## Design Goals / Approach
 
--   Design goals
--   why did you implement this the way you did?
--   Followed MVP to create e-commerce store. Took inspiration from online clothing store design/layout.
+-   As this was my first React project, and I was not confident with the basic React concepts, such as useState, the approach I took was to first create the features required to meet the MVP and then add styling last. I took inspiration from online clothing stores to design the layout of my website.
 
 ## Known issues
 
@@ -41,10 +29,11 @@ npm install
 -   Add a favourites page where user can access all favourited items.
 -   Add auto rotating feature to carousel.
 -   Add footer section with form for email subscription.
+-   Some bits of state are being passed down through multiple levels. I'd like to replace these with useContext to further solidify my understanding of useState.
+
+---
 
 ## Change logs
-
--   Write a paragraph labelled with the date every day you work on the project to discuss what you've done for the say. Be specific about the changes that have happened for that day.
 
 ### 17/04/23
 
@@ -90,15 +79,14 @@ npm install
 
 ### 25/04/23
 
--   Fix bug that allowed adding duplicate items to cart by creating if check to onclick function in product page.
+-   Fix bug that allowed adding duplicate items to cart by including if check to onclick function in product page.
 -   Add function to update total price on change of item quantities in cart.
 -   Add styling to all components.
 
+---
+
 ## What did you struggle with?
 
--   What? Why? How?
--   usestate, useeffect, usecontext
--   carousel - accessing items passed down as props but async, created useeffect to store value of promise so could access it.
--   Storing cart item state between page refreshes. Explored local storage method and implemented this to track state of cart items.
--   Try to add same product twice -> error
--   sometimes btn will disable after add item.
+-   Prior to commencing this project, I was unsure whether I would be able to meet the MVP as I was not confident in my knowledge of useState (what state was, how to use it, how it was related to user interaction and therefore, how I could use it as a parameter in useEffect). During the process of completing this project, I now have a much better understanding of identifying when I need to track and store a value and therefore when I need to use useState and how it works.
+-   When creating the carousel feature, I tried to use the item data passed down as props from the homepage, however this did not work as it was static. To solve this, I implemented an async function inside useEffect to refetch my item data upon change in item state.
+-   When implementing the cart page, I struggled to store items I had added to the cart. I was able to store cart items in state, however upon page refresh, I would loose this value as it would revert to initial state. To solve this, I explored and implemeted local storage to my project to allow me to save cart items between page refreshes.
