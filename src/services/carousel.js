@@ -1,5 +1,5 @@
-export const getCarouselItems = async (array) => {
-    await array;
+export const getCarouselItems = (array) => {
+    console.log(array.length, "array length");
     const randomNumArr = Array.from({ length: 4 }, () =>
         Math.floor(Math.random() * array.length)
     );
@@ -10,6 +10,7 @@ export const getCarouselItems = async (array) => {
         const newObj = { image, id };
         return newObj;
     });
+    console.log(carouselItems, "carousel items");
 
     return carouselItems;
 };

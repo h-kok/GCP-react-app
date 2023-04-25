@@ -5,23 +5,25 @@ import { getCarouselItems } from "../../services/carousel";
 import { NavLink } from "react-router-dom";
 
 const CarouselContainer = ({ items }) => {
+    console.log;
     const [currentIndex, setCurrentIndex] = useState(0);
     const [images, setImages] = useState("https://placehold.co/200x200");
     const [id, setId] = useState(0);
-    const length = 4;
+    const length = 3;
 
     useEffect(() => {
         const wrapper = async () => {
-            const data = await getCarouselItems(items);
+            const data = getCarouselItems(items);
             const img = data.map((item) => item.image[0]);
             const id = data.map((item) => item.id);
             setImages(img);
             setId(id);
         };
         wrapper();
-    }, [items]);
+    }, []);
 
     const handlePrevious = () => {
+        console.log(currentIndex, "current index");
         const newIndex = currentIndex - 1;
         setCurrentIndex(newIndex < 0 ? length : newIndex);
     };
@@ -40,7 +42,7 @@ const CarouselContainer = ({ items }) => {
                 }
                 onClick={handlePrevious}
             />
-            <NavLink to={`/products/${id[currentIndex]}`}>
+            <NavLink to={`/eCommerce-App/products/${id[currentIndex]}`}>
                 <img
                     className={styles.Carousel_Img}
                     src={images[currentIndex]}
