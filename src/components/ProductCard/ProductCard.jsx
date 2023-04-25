@@ -3,7 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const ProductCard = ({ id, img, brand, name, price }) => {
     return (
-        <NavLink to={`/products/${id}`} className={styles.ProductCard_Link}>
+        <NavLink
+            to={`/eCommerce-App/products/${id}`}
+            className={styles.ProductCard_Link}
+        >
             <div className={styles.ProductCard}>
                 <img
                     className={styles.ProductCard_Img}

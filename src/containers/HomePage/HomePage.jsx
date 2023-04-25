@@ -9,7 +9,7 @@ const HomePage = ({ items }) => {
                 Shop the latest in Women's Activewear
             </h3>
             <section className={styles.Carousel}>
-                <CarouselContainer items={items} />
+                {items && <CarouselContainer items={items} />}
             </section>
             <section className={styles.ProductList}>
                 {items ? (

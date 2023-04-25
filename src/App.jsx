@@ -24,13 +24,16 @@ function App() {
             <BrowserRouter>
                 <Nav />
                 <Routes>
-                    <Route path="/" element={<HomePage items={items} />} />
                     <Route
-                        path="/products/:id"
+                        path="/eCommerce-App/"
+                        element={<HomePage items={items} />}
+                    />
+                    <Route
+                        path="/eCommerce-App/products/:id"
                         element={<ProductPage cartItems={cartItems} />}
                     />
                     <Route
-                        path="/cart"
+                        path="/eCommerce-App/cart"
                         element={
                             <CartPage
                                 cartItems={cartItems}

@@ -63,7 +63,7 @@ const CartProductCard = ({
         showItem && (
             <>
                 <div className={styles.Product}>
-                    <NavLink to={`/products/${id}`}>
+                    <NavLink to={`/eCommerce-App/products/${id}`}>
                         <div className={styles.Product_Section}>
                             <img
                                 className={styles.Product_Img}

@@ -65,7 +65,7 @@ const CartPage = ({ cartItems, setCartItems }) => {
                             />
                         </div>
                     )}
-                    <NavLink to="/">
+                    <NavLink to="/eCommerce-App/">
                         {
                             <Button
                                 className={`${styles.Cart_Btn} ${styles.Cart_Btn_Shop} ${styles.Cart_Para}`}

@@ -80,7 +80,7 @@ const ProductPage = ({ cartItems }) => {
         setAddMsg(false);
         setDuplicateMsg(false);
     };
-    // console.log(item.brand ?? "unavailable", "prod pg brand");
+
     return item ? (
         <div className={styles.Product}>
             <div>
