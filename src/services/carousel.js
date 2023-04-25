@@ -1,5 +1,4 @@
 export const getCarouselItems = (array) => {
-    console.log(array.length, "array length");
     const randomNumArr = Array.from({ length: 4 }, () =>
         Math.floor(Math.random() * array.length)
     );

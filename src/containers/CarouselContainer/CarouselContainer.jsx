@@ -5,7 +5,6 @@ import { getCarouselItems } from "../../services/carousel";
 import { NavLink } from "react-router-dom";
 
 const CarouselContainer = ({ items }) => {
-    console.log;
     const [currentIndex, setCurrentIndex] = useState(0);
     const [images, setImages] = useState("https://placehold.co/200x200");
     const [id, setId] = useState(0);
@@ -23,7 +22,6 @@ const CarouselContainer = ({ items }) => {
     }, []);
 
     const handlePrevious = () => {
-        console.log(currentIndex, "current index");
         const newIndex = currentIndex - 1;
         setCurrentIndex(newIndex < 0 ? length : newIndex);
     };
