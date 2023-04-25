@@ -2,7 +2,7 @@
 
 ## Demo & Snippets
 
--   You can view the live version here: "insert link"
+-   You can view the live version here: https://h-kok.github.io/eCommerce-App/
 
 ## Requirements / Purpose
 
