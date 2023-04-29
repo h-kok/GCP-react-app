@@ -83,6 +83,12 @@ npm install
 -   Add function to update total price on change of item quantities in cart.
 -   Add styling to all components.
 
+### 29/04/23
+
+-   Fix bug favourited item doesn't save on page refresh.
+-   Create one error message state in product page to replace all separate error messages, to reduce amount of state being tracked.
+-   Refactored product card and cart product card props to just pass down item prop.
+
 ---
 
 ## What did you struggle with?
