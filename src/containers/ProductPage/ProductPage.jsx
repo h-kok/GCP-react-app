@@ -15,18 +15,17 @@ const ProductPage = ({ cartItems }) => {
     const [index, setIndex] = useState(0);
     const [quantity, setQuantity] = useState(null);
     const [addMsg, setAddMsg] = useState(false);
-    const [sizeMsg, setSizeMsg] = useState(false);
-    const [duplicateMsg, setDuplicateMsg] = useState(false);
-    const [unavailabe, setUnavailable] = useState(false);
+    const [errorMsg, setErrorMsg] = useState(false);
 
     useEffect(() => {
         const wrapper = async () => {
             const data = await getActivewearById(id);
             setItem(data);
             setQuantity(data.quantity);
+            setLike(data.favourited ?? false);
         };
         wrapper();
-    }, [id]);
+    }, [id, quantity, like]);
 
     const handleClickLike = () => {
         updateActivewear(id, { favourited: !like });
@@ -35,7 +34,7 @@ const ProductPage = ({ cartItems }) => {
 
     const handleClickAdd = () => {
         if (size.value === "Select a size") {
-            setSizeMsg(true);
+            setErrorMsg("Please select a size.");
         } else {
             const createCartItem = {
                 id: item.id,
@@ -55,13 +54,13 @@ const ProductPage = ({ cartItems }) => {
             );
 
             if (checkDuplicate >= 0) {
-                setDuplicateMsg(true);
+                setErrorMsg("This item is already in your cart.");
             } else if (quantity <= 0) {
-                setUnavailable(true);
+                setErrorMsg("Sorry, this item is unavailable");
             } else if (quantity > 0) {
                 cartItems.push(createCartItem);
                 localStorage.setItem("cartItems", JSON.stringify(cartItems));
-                setAddMsg(true);
+                setAddMsg("Your item was added successfully!");
                 updateQuantity(id, -1);
                 setQuantity(quantity - 1);
             }
@@ -69,8 +68,7 @@ const ProductPage = ({ cartItems }) => {
     };
     const handleOptionChange = () => {
         setAddMsg(false);
-        setSizeMsg(false);
-        setDuplicateMsg(false);
+        setErrorMsg(false);
     };
 
     const handleColourChange = (e) => {
@@ -78,7 +76,7 @@ const ProductPage = ({ cartItems }) => {
         const findIndex = item.colour.findIndex((i) => i === colour);
         setIndex(findIndex);
         setAddMsg(false);
-        setDuplicateMsg(false);
+        setErrorMsg(false);
     };
 
     return item ? (
@@ -139,23 +137,18 @@ const ProductPage = ({ cartItems }) => {
                                 return <Option value={item} key={item} />;
                             })}
                     </select>
-                    {sizeMsg && (
-                        <p className={styles.Product_Para}>
-                            Please select a size.
-                        </p>
-                    )}
-                    {duplicateMsg && (
-                        <p className={styles.Product_Para}>
-                            This item is already in your cart.
-                        </p>
-                    )}
+                    <p>{errorMsg}</p>
                 </div>
                 <div className={`${styles.Product_Btns}`}>
                     <Button
                         onClick={handleClickAdd}
                         className={styles.Product_BuyBtn}
                         value="Add to Cart"
-                        disabled={unavailabe}
+                        disabled={
+                            errorMsg === "Sorry, this item is unavailable"
+                                ? true
+                                : false
+                        }
                     />
                     <Button
                         onClick={handleClickLike}
@@ -170,8 +163,7 @@ const ProductPage = ({ cartItems }) => {
                     />
                 </div>
                 <div className={styles.Msgs}>
-                    {addMsg && <p>Your item was added successfully!</p>}
-                    {unavailabe && <p>Sorry, this item is unavailable</p>}
+                    <p>{addMsg}</p>
                 </div>
             </div>
         </div>
