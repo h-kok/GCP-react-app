@@ -33,15 +33,7 @@ const CartPage = ({ cartItems, setCartItems }) => {
                             return (
                                 <CartProductCard
                                     key={`${item.id}${item.colour}${item.size}`}
-                                    extraId={`${item.id}${item.colour}${item.size}`}
-                                    id={item.id}
-                                    image={item.image}
-                                    brand={item.brand}
-                                    name={item.name}
-                                    colour={item.colour}
-                                    size={item.size}
-                                    quantity={item.quantity}
-                                    price={item.price}
+                                    item={item}
                                     cartItems={cartItems}
                                     setCartItems={setCartItems}
                                     total={total}

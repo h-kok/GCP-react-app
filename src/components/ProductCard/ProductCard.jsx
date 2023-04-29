@@ -1,21 +1,21 @@
 import styles from "./ProductCard.module.scss";
 import { NavLink } from "react-router-dom";
 
-const ProductCard = ({ id, img, brand, name, price }) => {
+const ProductCard = ({ item }) => {
     return (
         <NavLink
-            to={`/eCommerce-App/products/${id}`}
+            to={`/eCommerce-App/products/${item.id}`}
             className={styles.ProductCard_Link}
         >
             <div className={styles.ProductCard}>
                 <img
                     className={styles.ProductCard_Img}
-                    src={img}
+                    src={item.image[0]}
                     alt="product"
                 />
-                <p className={styles.ProductCard_Brand}>{brand}</p>
-                <p>{name}</p>
-                <p>${price}.00</p>
+                <p className={styles.ProductCard_Brand}>{item.brand}</p>
+                <p>{item.name}</p>
+                <p>${item.price}.00</p>
             </div>
         </NavLink>
     );

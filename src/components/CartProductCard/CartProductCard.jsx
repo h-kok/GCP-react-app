@@ -5,29 +5,23 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const CartProductCard = ({
-    id,
-    extraId,
-    image,
-    brand,
-    name,
-    colour,
-    size,
-    quantity,
-    price,
+    item,
     cartItems,
     setCartItems,
     total,
     setTotal,
 }) => {
     const [showItem, setShowItem] = useState(true);
-    const [count, setCount] = useState(quantity);
+    const [count, setCount] = useState(item.quantity);
     const [unavailable, setUnavailable] = useState(false);
 
     const handleRemove = () => {
-        updateQuantity(id, +count);
+        updateQuantity(item.id, +count);
 
         const findIndex = cartItems.findIndex(
-            (i) => `${i.id}${i.colour}${i.size}` === extraId
+            (i) =>
+                `${i.id}${i.colour}${i.size}` ===
+                `${item.id}${item.colour}${item.size}`
         );
         cartItems.splice(findIndex, 1);
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -40,13 +34,13 @@ const CartProductCard = ({
     };
 
     const handleIncrement = async () => {
-        const data = await getActivewearById(id);
+        const data = await getActivewearById(item.id);
         if (data.quantity === 0) {
             setUnavailable(true);
         } else {
             setCount(count + 1);
-            updateQuantity(id, -1);
-            setTotal(total + price);
+            updateQuantity(item.id, -1);
+            setTotal(total + item.price);
         }
     };
 
@@ -54,8 +48,8 @@ const CartProductCard = ({
         setUnavailable(false);
         if (count > 1) {
             setCount(count - 1);
-            updateQuantity(id, +1);
-            setTotal(total - price);
+            updateQuantity(item.id, +1);
+            setTotal(total - item.price);
         }
     };
 
@@ -63,11 +57,11 @@ const CartProductCard = ({
         showItem && (
             <>
                 <div className={styles.Product}>
-                    <NavLink to={`/eCommerce-App/products/${id}`}>
+                    <NavLink to={`/eCommerce-App/products/${item.id}`}>
                         <div className={styles.Product_Section}>
                             <img
                                 className={styles.Product_Img}
-                                src={image}
+                                src={item.image}
                                 alt="product image"
                             />
                         </div>
@@ -78,15 +72,17 @@ const CartProductCard = ({
                         <p
                             className={`${styles.Product_Brand} ${styles.Product_Para}`}
                         >
-                            {brand}
+                            {item.brand}
                         </p>
                         <p
                             className={`${styles.Product_Name} ${styles.Product_Para}`}
                         >
-                            {name}
+                            {item.name}
                         </p>
-                        <p className={styles.Product_Para}>Colour: {colour}</p>
-                        <p className={styles.Product_Para}>Size: {size}</p>
+                        <p className={styles.Product_Para}>
+                            Colour: {item.colour}
+                        </p>
+                        <p className={styles.Product_Para}>Size: {item.size}</p>
                         <p className={styles.Product_Para}>
                             Quantity:{" "}
                             <Button
@@ -103,7 +99,7 @@ const CartProductCard = ({
                         </p>
                         {unavailable && <p>Maximum quantity reached.</p>}
                         <p className={styles.Product_Para}>
-                            Subtotal: ${price * count}.00
+                            Subtotal: ${item.price * count}.00
                         </p>
                     </div>
                     <div className={styles.Product_Section}>
