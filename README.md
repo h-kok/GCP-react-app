@@ -12,8 +12,16 @@
 
 ## Build Steps
 
+-   To install node modules:
+
 ```
 npm install
+```
+
+-   To run application:
+
+```
+npm run build
 ```
 
 ## Design Goals / Approach
@@ -88,6 +96,12 @@ npm install
 -   Fix bug favourited item doesn't save on page refresh.
 -   Create one error message state in product page to replace all separate error messages, to reduce amount of state being tracked.
 -   Refactored product card and cart product card props to just pass down item prop.
+
+### 17/5/23
+
+-   Update landing page styling.
+-   Add auto move carousel feature.
+-   Update build steps.
 
 ---
 
