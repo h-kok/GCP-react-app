@@ -100,7 +100,6 @@ npm run build
 ### 17/5/23
 
 -   Update landing page styling.
--   Add auto move carousel feature.
 -   Update build steps.
 
 ---
