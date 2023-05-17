@@ -2,7 +2,29 @@
     margin: 10px;
     &_Heading {
         margin: 10px;
+        z-index: 1;
     }
+    &_Text {
+        padding: 10px;
+    }
+    &_Landing {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: aliceblue;
+    }
+    &_Imgs {
+        width: 400px;
+        border-radius: 50%;
+        opacity: 50%;
+        position: absolute;
+        left: 20vw;
+    }
+    // &_Yoga {
+    //     height: 400px;
+    //     width: 500px;
+    //     border-radius: 10px;
+    // }
 }
 
 .Carousel {

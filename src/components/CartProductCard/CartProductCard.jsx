@@ -1,7 +1,7 @@
 import styles from "./CartProductCard.module.scss";
 import Button from "../Button/Button";
 import { getActivewearById, updateQuantity } from "../../services/activewear";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const CartProductCard = ({

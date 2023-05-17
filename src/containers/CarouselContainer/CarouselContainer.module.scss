@@ -1,15 +1,17 @@
 .Carousel {
     display: flex;
     align-items: center;
+    // border: 2px solid black;
 
     &_Img {
         width: 300px;
+        border-radius: 3px;
     }
     &_Btn {
         height: 60px;
         background-color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 10px;
         &:hover {
             background-color: rgb(238, 238, 238);
         }
