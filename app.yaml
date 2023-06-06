@@ -7,9 +7,17 @@ runtime: nodejs16
 #   static_files: build/index.html
 #   upload: build/index.html
 
-  handlers:
-  - url: /.*
-  static_files: build/index.html
-  upload: build/(.*\..+)$
-  - url: /
-  static_dir: build
+# handlers:
+# - url: /.*
+# static_files: build/index.html
+# upload: build/(.*\..+)$
+# - url: /
+# static_dir: build
+
+handlers:
+    - url: /
+      static_files: build/index.html
+      upload: build/index.html
+    - url: /(.*)$
+      static_files: build/\1
+      upload: build/(.*)
